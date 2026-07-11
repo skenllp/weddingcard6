@@ -26,7 +26,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     /* === DESIGN TOKENS === */
     :root {
@@ -46,7 +46,7 @@
       --charcoal:    #2C2416;
       --terracotta:  #C9927A;
       --off-white:   #FAF7F2;
-      --font-script:  'Great Vibes', cursive;
+      --font-script:  'Alex Brush', 'Great Vibes', cursive;
       --font-display: 'Playfair Display', Georgia, serif;
       --font-body:    'Cormorant Garamond', Georgia, serif;
       --section-pad: clamp(3rem, 6vw, 5rem);
@@ -179,9 +179,9 @@
       background: linear-gradient(90deg, transparent, #8FA889, transparent);
     }
 
-    /* Names in Great Vibes — same as hero */
+    /* Names in Alex Brush — same as hero */
     .ld-names {
-      font-family: 'Great Vibes', cursive;
+      font-family: 'Alex Brush', 'Great Vibes', cursive;
       font-size: clamp(2.4rem, 8vw, 4rem);
       color: #3D5A3E; line-height: 1;
       text-align: center;
@@ -189,7 +189,7 @@
       animation: ldFadeUp 0.9s ease 2.6s forwards;
     }
     .ld-amp {
-      font-family: 'Great Vibes', cursive;
+      font-family: 'Alex Brush', 'Great Vibes', cursive;
       font-size: clamp(1.4rem,4.5vw,2.2rem);
       color: #C8A96E; display: block; margin: 0.05em 0;
     }
@@ -379,7 +379,7 @@
     @media (max-width: 580px) { .couple-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
     .person-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.6rem; }
     .person-role { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); }
-    .person-name { font-family: var(--font-script); font-size: clamp(2rem, 5vw, 2.8rem); color: var(--green); line-height: 1; }
+    .person-name { font-family: 'Alex Brush', var(--font-script); font-size: clamp(2rem, 5vw, 2.8rem); color: var(--green); line-height: 1; }
     .person-lineage { font-family: var(--font-display); font-style: italic; font-size: 0.94rem; color: var(--text-light); line-height: 1.7; }
 
     /* === INVITATION PROSE === */
@@ -451,9 +451,10 @@
     .event-card:hover { box-shadow: 0 14px 44px rgba(61,90,62,0.1); transform: translateY(-5px); }
     .event-card::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 36px; height: 3px; background: var(--gold); }
     .ev-name { font-family: var(--font-script); font-size: 2.1rem; color: var(--green); margin-bottom: 1.3rem; }
-    .ev-rows { display: flex; flex-direction: column; gap: 0.75rem; }
-    .ev-row { display: flex; align-items: flex-start; justify-content: center; gap: 0.55rem; }
-    .ev-icon { color: var(--gold); font-size: 1rem; margin-top: 0.18rem; flex-shrink: 0; }
+    .ev-rows { display: flex; flex-direction: column; gap: 0.75rem; max-width: 340px; margin: 0 auto; }
+    .ev-row { display: flex; align-items: flex-start; justify-content: flex-start; gap: 0.55rem; }
+    .ev-icon { display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.18rem; }
+    .ev-icon img { width: 18px; height: 18px; object-fit: contain; display: block; }
     .ev-text { font-family: var(--font-body); font-size: 0.98rem; color: var(--text-mid); font-style: italic; text-align: left; }
 
     /* === MAP PHOTO === */
@@ -499,7 +500,7 @@
 
     /* === FOOTER === */
     footer { background: var(--text-dark); color: var(--text-light); text-align: center; padding: 2rem 1.5rem; }
-    .footer-names { font-family: var(--font-script); font-size: clamp(2.2rem, 5vw, 3.2rem); color: var(--gold); margin-bottom: 0.5rem; }
+    .footer-names { font-family: 'Alex Brush', var(--font-script); font-size: clamp(2.2rem, 5vw, 3.2rem); color: var(--gold); margin-bottom: 0.5rem; }
     .footer-sub { font-family: var(--font-display); font-style: italic; font-size: 0.93rem; color: rgba(155,135,115,0.65); }
     .footer-copy { font-size: 0.7rem; margin-top: 1.8rem; opacity: 0.35; letter-spacing: 0.1em; }
 
@@ -774,15 +775,15 @@
         <div class="ev-name">Nikkah</div>
         <div class="ev-rows">
           <div class="ev-row">
-            <span class="ev-icon">&#x1F4C5;</span>
+            <span class="ev-icon"><img src="calendar.png" alt="Date" /></span>
             <span class="ev-text">Saturday, August 15th, 2026</span>
           </div>
           <div class="ev-row">
-            <span class="ev-icon">&#x23F0;</span>
+            <span class="ev-icon"><img src="time.png" alt="Time" /></span>
             <span class="ev-text">After Asr Namaz</span>
           </div>
           <div class="ev-row">
-            <span class="ev-icon">&#x1F4CD;</span>
+            <span class="ev-icon"><img src="location.png" alt="Location" /></span>
             <span class="ev-text">NA Manzil, Koliyadukkam<br />P.O. Perumbala, Kasargod<br /><span style="font-size:0.88em;opacity:0.75;">Near Apsara Public School / Sa-adiya Arts and Science College</span></span>
           </div>
         </div>
@@ -803,15 +804,15 @@
         <div class="ev-name">Reception</div>
         <div class="ev-rows">
           <div class="ev-row">
-            <span class="ev-icon">&#x1F4C5;</span>
+            <span class="ev-icon"><img src="calendar.png" alt="Date" /></span>
             <span class="ev-text">Saturday, August 15th, 2026</span>
           </div>
           <div class="ev-row">
-            <span class="ev-icon">&#x23F0;</span>
+            <span class="ev-icon"><img src="time.png" alt="Time" /></span>
             <span class="ev-text">After Nikkah</span>
           </div>
           <div class="ev-row">
-            <span class="ev-icon">&#x1F4CD;</span>
+            <span class="ev-icon"><img src="location.png" alt="Location" /></span>
             <span class="ev-text">NA Manzil, Koliyadukkam<br />P.O. Perumbala, Kasargod<br /><span style="font-size:0.88em;opacity:0.75;">Near Apsara Public School / Sa-adiya Arts and Science College</span></span>
           </div>
         </div>
