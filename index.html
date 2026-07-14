@@ -1384,36 +1384,60 @@
       const iconSound = document.getElementById('icon-sound');
       const iconMuted = document.getElementById('icon-muted');
 
-      // Attempt autoplay on first user interaction (browser policy)
       let started = false;
+
       function startMusic() {
-        if (!started) {
-          audio.volume = 0.45;
-          audio.play().catch(() => { }); // silently fail if still blocked
-          started = true;
+        if (started) return;
+        started = true;
+        audio.volume = 0.45;
+        const p = audio.play();
+        if (p !== undefined) {
+          p.catch(() => {
+            // Play was blocked — reset flag so the next gesture retries
+            started = false;
+          });
         }
       }
-      document.addEventListener('click', startMusic, { once: true });
-      document.addEventListener('scroll', startMusic, { once: true });
-      document.addEventListener('touchstart', startMusic, { once: true });
 
-      // Also try immediate autoplay (works on some browsers / after reload)
+      function updateMuteIcon() {
+        if (audio.paused) {
+          iconSound.style.display = 'none';
+          iconMuted.style.display = '';
+        } else {
+          iconSound.style.display = '';
+          iconMuted.style.display = 'none';
+        }
+      }
+
+      // Start on ANY touch or click anywhere on the page (covers Android)
+      ['touchstart', 'touchend', 'click', 'scroll'].forEach(evt => {
+        document.addEventListener(evt, function handler(e) {
+          startMusic();
+          document.removeEventListener(evt, handler);
+        }, { passive: true });
+      });
+
+      // Also try immediate autoplay (works on desktop / iOS Safari reload)
       window.addEventListener('load', () => {
         audio.volume = 0.45;
-        audio.play().then(() => { started = true; }).catch(() => { });
+        audio.play().then(() => {
+          started = true;
+          updateMuteIcon();
+        }).catch(() => { });
       });
 
       // Mute / unmute toggle
       muteBtn.addEventListener('click', () => {
-        startMusic();
+        if (!started) {
+          startMusic();
+          updateMuteIcon();
+          return;
+        }
         if (audio.paused) {
-          audio.play();
-          iconSound.style.display = '';
-          iconMuted.style.display = 'none';
+          audio.play().then(updateMuteIcon).catch(() => { });
         } else {
           audio.pause();
-          iconSound.style.display = 'none';
-          iconMuted.style.display = '';
+          updateMuteIcon();
         }
       });
     </script>
